@@ -261,7 +261,10 @@ public class DreamBackend {
         if (dreamInfo == null || dreamInfo.settingsComponentName == null) {
             return;
         }
-        uiContext.startActivity(new Intent().setComponent(dreamInfo.settingsComponentName));
+        Intent intent = new Intent()
+                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                .setComponent(dreamInfo.settingsComponentName);
+        uiContext.startActivity(intent);
     }
 
     public void preview(DreamInfo dreamInfo) {
